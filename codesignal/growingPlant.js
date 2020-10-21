@@ -17,6 +17,7 @@ function growingPlant(upSpeed, downSpeed, desiredHeight) {
     while (plantHeight < desiredHeight) {
         days++;
         plantHeight += upSpeed;
+        
         if (plantHeight >= desiredHeight) {
             return days;
         } else {
