@@ -28,7 +28,7 @@ function stringsRearrangement(a) {
     let permutations = [];
 
     permute(permutations, [], a);
-    // loop thru each permutation
+
     for (let arr of permutations) {
         let match = true;
 
