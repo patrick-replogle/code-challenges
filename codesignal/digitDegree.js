@@ -14,6 +14,7 @@
 // digitDegree(n) = 2.
 // 9 + 1 = 10 -> 1 + 0 = 1.
 
+// solution 1
 function digitDegree(n) {
     if (n <= 9) {
         return 0;
@@ -31,6 +32,22 @@ function digitDegree(n) {
         
         count++;
         n = curr;
+    }
+    return count;
+}
+
+// solution 2
+function digitDegree(n) {
+    let count = 0;
+    
+    while (String(n).length > 1) {
+        let curr = 0;
+        
+        for (let num of String(n)) {
+            curr += Number(num);
+        }
+        n = curr;
+        count++;
     }
     return count;
 }
