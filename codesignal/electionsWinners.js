@@ -29,19 +29,15 @@ function electionsWinners(votes, k) {
         tally[i] = votes[i];
         max = Math.max(votes[i], max);
     }
-    
     // check if all votes have been cast and the maxVotes received is tied with another candidate
     if (k === 0 && votes.indexOf(max) !== votes.lastIndexOf(max)) {
         return 0;
     } 
-    
     // else loop thru the vote tally dict and check how many candidate could win if k votes were added to their tally
     for (let key in tally) {
-        if (tally[key] === max) {
+        if (tally[key] === max || tally[key] + k > max) {
             count++;
-        } else if (tally[key] + k > max) {
-            count++;
-        }
+        } 
     }
     return count;
 }
