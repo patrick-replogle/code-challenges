@@ -19,11 +19,7 @@
 // Although there are more bs than cs, this string is not beautiful because there are no as, so therefore there are more bs than as.
 
 function isBeautifulString(inputString) {
-    let charCount = {"a": 0};
-    
-    for (let i = 1; i < 27; i++) {
-        charCount[String.fromCharCode(("a".charCodeAt(0) + i))] = 0;
-    }
+    let charCount = {};
     
     for (let char of inputString) {
         if (!charCount.hasOwnProperty(char)) {
@@ -34,6 +30,10 @@ function isBeautifulString(inputString) {
 
     for (let key in charCount) {
         let prevChar = String.fromCharCode((key.charCodeAt(0) - 1));
+        
+        if (key !== "a" && !charCount.hasOwnProperty(prevChar)) {
+            return false
+        };
         
         if (charCount[prevChar] < charCount[key]) {
             return false;
