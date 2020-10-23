@@ -14,18 +14,12 @@
 // Other letters can be obtained in the same manner.
 
 function messageFromBinaryCode(code) {
-    let bits = [];
     let message = "";
     
     for (let i = 0; i < code.length; i += 8) {
-        let temp = code.slice(i, i + 8);
-        bits.push(temp);
+        let currBit = code.slice(i, i + 8);
+        let currBitToLetter = String.fromCharCode(parseInt(currBit, 2))
+        message += currBitToLetter;
     }
-    
-    for (let bit of bits) {
-        let letter = String.fromCharCode(parseInt(bit, 2))
-        message += letter;
-    }
-    
   return message;
 }
