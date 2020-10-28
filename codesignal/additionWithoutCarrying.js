@@ -15,6 +15,7 @@
 // + ____
 //   1180
 
+// solution 1
 function additionWithoutCarrying(param1, param2) {
     param1 = String(param1).split("").reverse();
     param2 = String(param2).split("").reverse();
@@ -34,4 +35,22 @@ function additionWithoutCarrying(param1, param2) {
         i++;
     }
     return Number(result.reverse().join(""));
+}
+
+// solution 2
+function additionWithoutCarrying(param1, param2) {
+    let result = "";
+    
+    while (param1 > 0 || param2 > 0) {
+        let currDigit = (param1 % 10) + (param2 % 10);
+
+        if (currDigit >= 10) {
+            result = result + (currDigit % 10);
+        } else {
+            result = result + currDigit;
+        };
+        param1 = Math.floor(param1 / 10);
+        param2 = Math.floor(param2 / 10);
+    }
+    return Number(result.split("").reverse().join(""));
 }
