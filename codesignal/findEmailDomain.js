@@ -19,8 +19,8 @@ function findEmailDomain(address) {
         if (address[i] === "@") {
             break;
         } else {
-            domain += address[i];
+            domain = address[i] + domain;
         }
     }
-    return domain.split("").reverse().join("");
+    return domain;
 }
