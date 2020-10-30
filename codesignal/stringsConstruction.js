@@ -9,6 +9,23 @@
 
 // For a = "ab" and b = "abcbcb", the output should be stringsConstruction(a, b) = 1.
 
+// solution 2
+function stringsConstruction(a, b) {
+    let count = 0;
+    
+    while (true) {
+        for (let char of a) {
+            if (b.indexOf(char) > -1) {
+                b = b.replace(char, "");
+            } else {
+                return count;
+            }
+        }
+        count++;
+    }
+}
+
+// naive solution 
 function stringsConstruction(a, b) {
     let stillValidLettersLeft = true;
     let count = 0;
