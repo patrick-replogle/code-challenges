@@ -25,7 +25,7 @@ function mostFrequentDigitSum(n) {
             dict[currSum] = 0;
         }
         dict[currSum] += 1;
-        n = n - (eval(String(n).split("").join("+")));
+        n = n - currSum;;
     }
     
     for (key in dict) {
