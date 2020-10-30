@@ -16,6 +16,7 @@
 // For string1 = "aa" and string2 = "bc", the output should be
 // isSubstitutionCipher(string1, string2) = false.
 
+// solution 1
 function isSubstitutionCipher(string1, string2) {
     let seen1 = {};
     let seen2 = {};
@@ -30,6 +31,26 @@ function isSubstitutionCipher(string1, string2) {
         }
         
         if (seen1[string1[i]] !== string2[i] || seen2[string2[i]] !== string1[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// solution 2
+function isSubstitutionCipher(string1, string2) {
+    let dict = {};
+    let used = new Set();
+    
+    for (let i = 0; i < string1.length; i++) {
+        if (!(string1[i] in dict)) {
+            if (used.has(string2[i])) {
+                return false;
+            } 
+            dict[string1[i]] = string2[i];
+            used.add(string2[i]);
+            
+        } else if (dict[string1[i]] !== string2[i]){ 
             return false;
         }
     }
