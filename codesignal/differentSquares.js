@@ -27,6 +27,7 @@
 // 2 3
 // 2 1
 
+// solution 1
 function differentSquares(matrix) {
     if (matrix.length <= 1 || matrix[0].length <= 1) {
         return 0;
@@ -42,6 +43,19 @@ function differentSquares(matrix) {
             if (!set.has(temp)) {
                 set.add(temp);
             }
+        }
+    }
+    return set.size;
+}
+
+// solution 2
+function differentSquares(matrix) {
+    let set = new Set();
+    
+    for (let i = 0; i < matrix.length - 1; i++) {
+        for (let j = 0; j < matrix[0].length - 1; j++) {
+            let curr = `${matrix[i][j]}${matrix[i][j+1]}${matrix[i+1][j]}${matrix[i+1][j+1]}`
+            set.add(curr);
         }
     }
     return set.size;
