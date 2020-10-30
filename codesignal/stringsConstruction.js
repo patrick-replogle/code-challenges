@@ -39,11 +39,8 @@ function stringsConstruction(a, b) {
     }
     
     while (true) {
-        let curr = "";
-        
         for (let i = 0; i < a.length; i++) {
             if (seen.hasOwnProperty(a[i]) && seen[a[i]] > 0) {
-                curr += a[i];
                 seen[a[i]] -= 1;
             } else {
                 return count;
