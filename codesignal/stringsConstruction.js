@@ -25,9 +25,8 @@ function stringsConstruction(a, b) {
     }
 }
 
-// naive solution 
+// solution 1 
 function stringsConstruction(a, b) {
-    let stillValidLettersLeft = true;
     let count = 0;
     let seen = {};
     a = a.split("").sort();
@@ -39,7 +38,7 @@ function stringsConstruction(a, b) {
         seen[char] += 1;
     }
     
-    while (stillValidLettersLeft) {
+    while (true) {
         let curr = "";
         
         for (let i = 0; i < a.length; i++) {
@@ -47,11 +46,10 @@ function stringsConstruction(a, b) {
                 curr += a[i];
                 seen[a[i]] -= 1;
             } else {
-                stillValidLettersLeft = false;
-                break;
+                return count;
             }
         }
-        if (curr.split("").sort().join("") === a.join("")) count++;
+        count++;
     }
     return count;
 }
