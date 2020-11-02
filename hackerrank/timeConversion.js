@@ -7,9 +7,13 @@ function timeConversion(s) {
     let timeOfDay = s.substring(s.length - 2, s.length);
     let hours = s.substring(0, 2);
 
-    if (timeOfDay === "PM") {
-        return `${12 + Number(hours)}:${s.substring(3, 8)}`;
+    if (timeOfDay === "PM" && hours === "12") {
+        return str.substring(0, s.length - 2);
+    } else if (timeOfDay === "PM" && hours !== "12") {
+        return `${12 + Number(hours)}:${s.substring(3, 8)}`
+    } else if (timeOfDay === "AM" && hours === "12"){
+        return `00:${s.substring(3, 8)}`;
     } else {
-        return s.substring(0, s.length - 3);
+        return s.substring(0, s.length - 2);
     }
 }
