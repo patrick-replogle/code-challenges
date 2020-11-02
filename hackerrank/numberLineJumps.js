@@ -9,15 +9,14 @@ return YES, otherwise return NO.
 // first brute for attempt
 function kangaroo(x1, v1, x2, v2) {
     let jumps = 0;
-    
-    while (true) {
+
+    while (jumps < 5000) {
         if (x1 === x2) return 'YES';
         x1 += v1;
         x2 += v2;
         jumps++;
-        
-        if (jumps === 5000) return 'NO';
     }
+    return 'NO';
 }
 
 // second solution
