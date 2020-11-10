@@ -31,3 +31,30 @@ var climbStairs = function(n) {
     
     return cache[n];
 };
+
+// solution 2
+var climbStairs = function(n) {
+    let result = [1, 2];
+    
+    if (n <= 2) return result[n - 1];
+    
+    for (let i = 2; i < n; i++) {
+        result[i] = result[i - 1] + result[i - 2];
+    }
+    return result[result.length - 1];
+};
+
+// solution 3
+var climbStairs = function(n) {
+    if (n <= 2) return n;
+    
+    let a = 1;
+    let b = 2;
+        
+    for (let i = 3; i <= n; i++) {
+        let temp = b;
+        b = a + b;
+        a = temp;
+    }
+    return b;
+};
