@@ -62,7 +62,7 @@ var getNeighbors = function(row, col, grid) {
     return neighbors;
 }
 
-// converted first pass solution to use oop
+// converted first pass solution to use a graph class
 var numIslands = function(grid) {
     let graph = new Graph(grid)
     return graph.solve();
