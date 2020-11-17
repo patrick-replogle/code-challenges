@@ -11,6 +11,7 @@
  * @return {number}
  */
  
+// first pass solution
 let lengthOfLongestSubstring = function(s) {;
     let currLongest = [];
     let maxLongest = [];
@@ -33,7 +34,26 @@ let lengthOfLongestSubstring = function(s) {;
             currLongest.shift();
             left++;
         }
-    }  
-                         
+    }                     
     return maxLongest.length;
 };
+
+// second pass solution
+var lengthOfLongestSubstring = function(s) {
+    let set = new Set();
+    let left = 0;
+    let right = 0;
+    let max = 0;
+    
+    while (left < s.length && right < s.length) {
+        if (!set.has(s[right])) {
+            set.add(s[right]);
+            right++;
+        } else {
+            set.delete(s[left]);
+            left++;
+        }
+        max = Math.max(set.size, max);
+    }
+    return max;
+}
