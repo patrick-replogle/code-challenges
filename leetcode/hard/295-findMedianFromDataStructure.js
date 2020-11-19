@@ -50,6 +50,7 @@ MedianFinder.prototype.isEven = function() {
 }
 
 // second pass => converted to a class and used binary search instead of repeatedly sorting the array
+// went from being 9% faster than other JS solutions to 90% faster
 class MedianFinder {
     constructor() {
         this.nums = [];
