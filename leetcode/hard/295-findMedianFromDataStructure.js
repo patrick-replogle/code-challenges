@@ -19,14 +19,12 @@
 // addNum(3) 
 // findMedian() -> 2
 
-/**
- * initialize your data structure here.
- */
+// first pass solution
 var MedianFinder = function() {
     this.nums = [];
     this.size = 0;
 };
-// first pass solution
+
 MedianFinder.prototype.addNum = function(num) {
     this.nums.push(num);
     this.nums.sort((a, b) => a - b);
