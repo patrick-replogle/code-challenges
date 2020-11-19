@@ -55,7 +55,7 @@ class MedianFinder {
         this.nums = [];
         this.size = 0;
     }
-
+    
     addNum(num) {
         if (this.size === 0) {
             this.nums.push(num);
@@ -67,7 +67,6 @@ class MedianFinder {
                 this.nums.splice(index, 0, num);
             }
         }
-        console.log(this.nums)
         this.size++;
     }
     
@@ -83,7 +82,7 @@ class MedianFinder {
         }
         return l;
     }
-
+    
     findMedian() {
         let mid = Math.floor(this.size / 2);
 
@@ -93,7 +92,7 @@ class MedianFinder {
             return this.nums[mid];
         }
     }
-
+    
     isEven() {
         if (this.size % 2 === 0) {
             return true;
