@@ -31,8 +31,8 @@ class Trie {
     }
     
     startsWith(prefix) {
-        for (let key of this.trie) {
-            if (key.startsWith(prefix)) {
+        for (let word of this.trie) {
+            if (word.startsWith(prefix)) {
                 return true;
             }
         }
