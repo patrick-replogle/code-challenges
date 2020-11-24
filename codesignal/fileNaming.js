@@ -31,3 +31,29 @@ function fileNaming(names) {
     }
     return result;
 }
+
+// another solution updating the inputArray instead of returning a new array
+function fileNaming(names) {
+    let seen = new Set();
+    
+    for (let i = 0; i < names.length; i++) {
+        let curr = names[i];
+        
+        if (!seen.has(curr)) {
+            seen.add(curr);
+        } else {
+            let count = 0;
+            let nextName = curr;
+            
+            while (seen.has(nextName)) {
+                count++;
+                nextName = curr + "(" + count + ")"
+                
+            }
+            seen.add(nextName);
+            names[i] = nextName;
+        }
+    }
+    return names;
+}
+
