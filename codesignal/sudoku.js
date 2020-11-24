@@ -3,23 +3,14 @@
 
 // This algorithm should check if the given grid of numbers represents a correct solution to Sudoku.
 
-function sudoku(grid) { 
-    if (!checkRow(grid)) {
-        return false;
+function sudoku(grid) {
+    if (checkRows(grid) && checkColumns(grid) && checkBox(grid)) {
+        return true;
     }
-    
-    if (!checkCol(grid)) {
-        return false;
-    }
-    
-    if (!checkBox(grid)) {
-        return false;
-    }
-    
-    return true;
+    return false;
 }
 
-function checkRow(grid) {
+function checkRows(grid) {
     for (let i = 0; i < grid.length; i++) {
         let set = new Set(grid[i]);
         if (set.size !== 9) {
@@ -29,9 +20,12 @@ function checkRow(grid) {
     return true;
 }
 
-function checkCol(grid) {
+function checkColumns(grid) {
     for (let i = 0; i < grid.length; i++) {
-        let set = new Set([grid[0][i], grid[1][i], grid[2][i], grid[3][i], grid[4][i], grid[5][i], grid[6][i], grid[7][i], grid[8][i]]);
+        let set = new Set([grid[0][i], grid[1][i], grid[2][i], 
+                           grid[3][i], grid[4][i], grid[5][i], 
+                           grid[6][i], grid[7][i], grid[8][i]
+                          ]);
         if (set.size !== 9){ 
             return false
         };
@@ -42,8 +36,10 @@ function checkCol(grid) {
 function checkBox(grid, i, j) {
     for (let i = 1; i < grid.length - 1; i += 3) {
         for (let j = 1; j < grid[0].length - 1; j += 3) {
-            let set = new Set([grid[i - 1][j - 1], grid[i - 1][j], grid[i - 1][j + 1], grid[i][j - 1], grid[i][j], grid[i][j + 1], 
-                               grid[i + 1][j - 1], grid[i + 1][j], grid[i + 1][j + 1]])
+            let set = new Set([grid[i - 1][j - 1], grid[i - 1][j], grid[i - 1][j + 1], 
+                               grid[i][j - 1], grid[i][j], grid[i][j + 1], 
+                               grid[i + 1][j - 1], grid[i + 1][j], grid[i + 1][j + 1]
+                              ])
                                
             if (set.size !== 9) {
                 return false;
