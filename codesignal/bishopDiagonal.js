@@ -29,7 +29,7 @@ function bishopDiagonal(bishop1, bishop2) {
         if (x1 < y1 && x2 > y2) {
             while (tilesUTF16.has(x1 - 1) && tilesUTF16.has(x2 + 1)) { x1--, x2++ }
             while (tilesUTF16.has(y1 + 1) && tilesUTF16.has(y2 - 1)) { y1++, y2-- }
-        // bishop1 is bottom right
+        // bishop1 is bottom left
         } else if (x1 < y1 && x2 < y2) {
             while (tilesUTF16.has(x1 - 1) && tilesUTF16.has(x2 - 1)) { x1--, x2-- }        
             while (tilesUTF16.has(y1 + 1) && tilesUTF16.has(y2 + 1)) { y1++, y2++ }
