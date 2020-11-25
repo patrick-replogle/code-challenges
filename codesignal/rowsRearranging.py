@@ -17,8 +17,10 @@
 //           [2, 2], 
 //           [4, 3]]
 
-// sort rows asc by first value in each row, then iteratite thru each column and return false if numbers aren't 
+// first pass solution:
+// sort rows in asc order by first value in each row, then iteratite thru values in each column and return false if numbers aren't 
 // ascending from top row to bottom row
+
 def rowsRearranging(matrix):
     matrix.sort(key=lambda x: x[0])
     
