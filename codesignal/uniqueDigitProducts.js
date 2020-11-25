@@ -30,3 +30,8 @@ function uniqueDigitProducts(a) {
     }
     return unique.size;
 }
+
+// seconds pass one liner solution
+function uniqueDigitProducts(a) {
+    return new Set(a.map(el => (eval(String(el).split("").join("*"))))).size;
+}
