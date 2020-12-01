@@ -5,6 +5,7 @@ const rotateRight = function(head, k) {
     if (!head || !head.next || k === 0) return head;
     
     let curr = head;
+    let prev = null;
     let length = 0;
     
     while (curr) {
@@ -12,11 +13,11 @@ const rotateRight = function(head, k) {
         length++;
     }
     
-    k = k % length; // prevent unnecessary cycles where list returns back to how it started
+    k = k % length; // prevent unecessary cycles where list returns back to it's original state
     
     while (k > 0) {
-        let prev = null;
-        let curr = head;
+        prev = null;
+        curr = head;
         
         while (curr.next) {
             prev = curr;
