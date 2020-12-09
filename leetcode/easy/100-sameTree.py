@@ -1,27 +1,27 @@
-// Given two binary trees, write a function to check if they are the same or not.
+# Given two binary trees, write a function to check if they are the same or not.
 
-// Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+# Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
 
-// Example 1:
+# Example 1:
 
-// Input:     1         1
-//           / \       / \
-//          2   3     2   3
+# Input:     1         1
+#           / \       / \
+#          2   3     2   3
 
-//         [1,2,3],   [1,2,3]
+#         [1,2,3],   [1,2,3]
 
-// Output: true
-// Example 2:
+# Output: true
+# Example 2:
 
-// Input:     1         1
-//           /           \
-//          2             2
+# Input:     1         1
+#           /           \
+#          2             2
 
-//         [1,2],     [1,null,2]
+#         [1,2],     [1,null,2]
 
-// Output: false
+# Output: false
 
-// iterative solution using stack
+# iterative solution using stack
 class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         stack = [[p, q]]
@@ -43,7 +43,7 @@ class Solution:
         
         return True
 
-// resursive solution
+# resursive solution
 class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         if not p and not q:
