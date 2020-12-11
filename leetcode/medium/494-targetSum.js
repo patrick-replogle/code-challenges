@@ -40,7 +40,7 @@ var findTargetSumWays = function(nums, s) {
     let stack = [[0, 0]];
     
     while (stack.length > 0) {
-        let [index, sum] = queue.pop();
+        let [index, sum] = stack.pop();
         
         if (sum === s && index === nums.length) {
             count++;
