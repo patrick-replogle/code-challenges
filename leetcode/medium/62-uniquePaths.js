@@ -7,11 +7,7 @@
 
 // first pass using dynamic programming
 var uniquePaths = function(m, n) {
-    let dp = [];
-    
-    for (let i = 0; i < m; i++) {
-        dp.push(new Array(n).fill(0));
-    }
+    let dp = new Array(m).fill().map(row => new Array(n).fill(0));
     
     for (let i = 1; i < n; i++) dp[0][i] = 1;
     for (let i = 0; i < m; i++) dp[i][0] = 1;
