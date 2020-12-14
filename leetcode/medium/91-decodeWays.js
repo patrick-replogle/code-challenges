@@ -33,6 +33,8 @@
 // dynamic programming => calculate number of ways to decode each 1 & 2 digit substring along the way and add them to dp array
 // each index in the dp array represents how many ways to decode the substring up until that index
 
+
+// dp solution
 var numDecodings = function(s) {
     let dp = new Array(s.length + 1).fill(0);
     dp[0] = 1;
@@ -45,8 +47,32 @@ var numDecodings = function(s) {
         if (oneDigit >= 1 && oneDigit <= 9) dp[i] += dp[i - 1];
         if (twoDigits >= 10 && twoDigits <= 26) dp[i] += dp[i - 2];
     }
-    
     return dp[s.length];
 };
+
+// recursive solution
+var numDecodings = function(s) {
+    let cache = {};
+    let len = s.length;
+    
+    function dfs(index) {
+        if (index in cache) return cache[index];
+        if (index === len) return 1;
+        if (s[index] === "0") return 0;
+        else if (index < len) {
+            let ways = dfs(index + 1);
+            let twoDigit = parseInt(s.slice(index, index + 2));
+            if (twoDigit >= 10 && twoDigit <= 26) ways += dfs(index + 2);
+            
+            cache[index] = ways;
+            return cache[index];
+        }
+    }
+    return dfs(0); 
+};
+
+
+
+
 
 
