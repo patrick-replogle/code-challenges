@@ -1,23 +1,23 @@
-// Invert a binary tree.
+# Invert a binary tree.
 
-// Example:
+# Example:
 
-// Input:
+# Input:
 
-//      4
-//    /   \
-//   2     7
-//  / \   / \
-// 1   3 6   9
-// Output:
+#      4
+#    /   \
+#   2     7
+#  / \   / \
+# 1   3 6   9
+# Output:
 
-//      4
-//    /   \
-//   7     2
-//  / \   / \
-// 9   6 3   1
+#      4
+#    /   \
+#   7     2
+#  / \   / \
+# 9   6 3   1
 
-// iterative solution using DFS
+# iterative solution using DFS
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         stack = [root]
@@ -32,7 +32,7 @@ class Solution:
                 
         return root
  
-// rescursive solution
+# rescursive solution
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:
