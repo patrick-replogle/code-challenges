@@ -15,7 +15,7 @@
 // Output: false
 // Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 
-// dynamic programming solution
+// greedy approach
 var canJump = function(nums) {
     let max = 0;
     let target = nums.length - 1;
@@ -26,6 +26,26 @@ var canJump = function(nums) {
         if (max >= target) return true;
         if (max <= i && nums[i] === 0) return false;
     }
+};
+
+// slow bfs approach
+var canJump = function(nums) {  
+    let cache = new Set();
+    let queue = [0];
+    
+    while (queue.length > 0) {
+        let currIdx = queue.shift(); 
+        
+        if (currIdx >= nums.length - 1) return true;
+        
+        for (let i = currIdx + 1; i <= currIdx + nums[currIdx]; i++) {
+            if (!cache.has(i)) {
+                queue.push(i);
+                cache.add(i);
+            }
+        } 
+    }
+    return false;
 };
 
 // slow recursive solution
