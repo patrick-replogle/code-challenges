@@ -15,6 +15,7 @@
 // Output: false
 // Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 
+// dynamic programming solution
 var canJump = function(nums) {
     let max = 0;
     let target = nums.length - 1;
@@ -25,4 +26,22 @@ var canJump = function(nums) {
         if (max >= target) return true;
         if (max <= i && nums[i] === 0) return false;
     }
+};
+
+// slow recursive solution
+var canJump = function(nums) {  
+    let visited = new Set();
+    
+    function solve(index) {
+        if (index >= nums.length - 1) return true;
+        
+        for (let i = index + 1; i <= index + nums[index]; i++) {
+            if (!visited.has(i)) {
+                if (solve(i)) return true;
+                visited.add(i)
+            }
+        }
+        return false;
+    }
+    return solve(0);
 };
