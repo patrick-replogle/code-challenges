@@ -33,3 +33,19 @@ var nextGreatestLetter = function(letters, target) {
     return letters[0];
 };
 
+//second pass solution using binary search
+var nextGreatestLetter = function(letters, target) {
+    let len = letters.length - 1;
+    let low = 0;
+    let high = letters.length - 1;
+    
+    if (target < letters[0] || target >= letters[len]) return letters[0];
+    
+    while (low <= high) {
+        let mid = Math.floor((high + low) / 2);
+        if (target < letters[mid]) high = mid - 1;
+        else low = mid + 1;
+    }
+    return letters[low];
+};
+
