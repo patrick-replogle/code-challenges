@@ -80,3 +80,21 @@ var kthSmallest = function(root, k) {
     
     return values[k - 1];
 };
+
+// same approach as above, but using constant memory
+var kthSmallest = function(root, k) {
+    if (!root) return null;
+    
+    let min;
+    
+    function inorderTraversal(root) {
+        if (root.left) inorderTraversal(root.left);
+        
+        k--;
+        if (k === 0) min = root.val;
+        
+        if (root.right) inorderTraversal(root.right);
+    }
+    inorderTraversal(root);
+    return min;
+};
