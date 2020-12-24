@@ -34,11 +34,10 @@ var pathSum = function(root, sum) {
     function DFT(node, currSum) {
         if (!node) return;
         
-        currSum += node.val;
-        if (currSum === sum) output++;
+        if (currSum + node.val === sum) output++;
         
-        DFT(node.left, currSum);
-        DFT(node.right, currSum);
+        DFT(node.left, currSum + node.val);
+        DFT(node.right, currSum + node.val);
     }
     
     while (stack.length > 0) {
@@ -51,4 +50,3 @@ var pathSum = function(root, sum) {
     }
     return output;
 };
-
