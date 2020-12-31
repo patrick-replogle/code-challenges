@@ -13,17 +13,16 @@
 // Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
 var merge = function(intervals) {
-    intervals.sort((a, b) => a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1]);
+    intervals.sort((a, b) => a[0] - b[0]);
     
     let result = [intervals[0]];
     
     for (let i = 1; i < intervals.length; i++) {
-        let len = result.length - 1;
-        let lastMerged = result[len];
+        let lastMerged = result[result.length - 1];
         let currInterval = intervals[i];
         
-        if (lastMerged[1] >= currInterval[0]) {
-            result[len][1] = Math.max(lastMerged[1], currInterval[1]);
+        if (currInterval[0] <= lastMerged[1]) {
+            result[result.length - 1][1] = Math.max(lastMerged[1], currInterval[1]);
         } else {
             result.push(currInterval);
         }
