@@ -28,3 +28,23 @@ var minSubArrayLen = function(s, nums) {
     return output === Infinity ? 0 : output;
 };
 
+// second pass solution using optimized approach
+var minSubArrayLen = function(s, nums) {
+    if (nums.indexOf(s) > -1) return 1;
+    
+    let output = Infinity;
+    let currSum = 0;
+    let j = 0;
+    
+    for (let i = 0; i < nums.length; i++) {
+        currSum += nums[i];
+        
+        while (currSum >= s) {
+            currSum -= nums[j];
+            output = Math.min(output, i - j + 1);
+            j++;
+        }
+    }
+    return output === Infinity ? 0 : output;
+};
+
