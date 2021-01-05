@@ -39,3 +39,29 @@ var oddEvenList = function(head) {
     
     return head;
 };
+
+// second pass solution using extra memory and making a new list
+var oddEvenList = function(head) {
+    if (!head || !head.next) return head;
+    
+    let oddHead = new ListNode(head.val);
+    let evenHead = new ListNode(head.next.val);
+    let oddHeadRef = oddHead;
+    let evenHeadRef = evenHead;
+    let curr = head.next.next;
+    let odd = true;
+    
+    while (curr) {
+        if (odd) {
+            oddHead.next = new ListNode(curr.val);
+            oddHead = oddHead.next;
+        } else {
+            evenHead.next = new ListNode(curr.val);
+            evenHead = evenHead.next;
+        }
+        odd = !odd;
+        curr = curr.next;
+    }
+    oddHead.next = evenHeadRef;
+    return oddHeadRef;
+};
