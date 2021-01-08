@@ -47,3 +47,26 @@ var isValidBST = function(root) {
     
     return isEqual;
 };
+
+
+// second pass solution: similar as the first, but using constant memory this time
+var isValidBST = function(root) {
+    if (!root) return null;
+    
+    let currVal = -Infinity;
+    let isEqual = true;
+    
+    function inorder(root) {  
+        if (root.left) inorder(root.left);
+        
+        if (currVal >= root.val) isEqual = false; // flag unbalanced tree
+
+        currVal = root.val;
+        
+        if (root.right) inorder(root.right);
+    }  
+    
+    inorder(root);
+ 
+    return isEqual;
+};
