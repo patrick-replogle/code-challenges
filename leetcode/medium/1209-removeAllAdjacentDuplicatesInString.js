@@ -83,18 +83,21 @@ var removeDuplicates = function(s, k) {
     let stack = [];
     
     for (let char of s) {
-        if (!stack.length || char !== stack[stack.length - 1][0]) {
+        let len = stack.length;
+        if (len === 0 || stack[len - 1][0] !== char) {
             stack.push([char, 1]);
-        } 
-        else if (stack[stack.length - 1][0] === char && stack[stack.length - 1][1] < k - 1) {
-            stack[stack.length - 1][1] += 1;
-        } 
+        }
+        else if (char === stack[len - 1][0] && stack[len - 1][1] < k - 1) {
+            stack[len - 1][1] += 1;
+        }
         else {
             stack.pop();
         }
     }
-    return stack.map(tuple => tuple[0].repeat(tuple[1])).join('')
+    return stack.map(tuple => tuple[0].repeat(tuple[1])).join('');
 };
+
+
 
 
 
