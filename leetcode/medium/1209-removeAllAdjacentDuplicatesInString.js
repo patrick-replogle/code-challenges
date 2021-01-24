@@ -77,3 +77,24 @@ var removeDuplicates = function(s, k) {
     }
     return stack.join('')
 };
+
+// third pass solution
+var removeDuplicates = function(s, k) {
+    let stack = [];
+    
+    for (let char of s) {
+        if (!stack.length || char !== stack[stack.length - 1][0]) {
+            stack.push([char, 1]);
+        } 
+        else if (stack[stack.length - 1][0] === char && stack[stack.length - 1][1] < k - 1) {
+            stack[stack.length - 1][1] += 1;
+        } 
+        else {
+            stack.pop();
+        }
+    }
+    return stack.map(tuple => tuple[0].repeat(tuple[1])).join('')
+};
+
+
+
