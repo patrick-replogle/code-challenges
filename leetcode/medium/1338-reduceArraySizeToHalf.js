@@ -11,18 +11,19 @@ Possible sets of size 2 are {3,5},{3,2},{5,2}.
 Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has size greater than half of the size of the old array.
 */
 
+// first pass solution
 var minSetSize = function(arr) {
     let dict = {};
     let target = arr.length / 2;
-    let output = 0;
-    let len = arr.length;
+    let setSize = 0;
+    let removed = 0;
     
     arr.forEach(num => dict[num] ? dict[num] += 1 : dict[num] = 1);
     
     for (let count of Object.values(dict).sort((a, b) => b - a)) {
-        len -= count;
-        output++;
-        if (len <= target) break;
+        removed += count
+        setSize++;
+        if (removed >= target) break;
     }
-    return output;
+    return setSize;
 };
