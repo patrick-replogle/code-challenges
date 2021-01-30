@@ -47,5 +47,5 @@ var smallerNumbersThanCurrent = function(nums) {
             dict[copy[i]] = i;
         }
      }
-    return nums.map((num, i) => dict[num]);
+    return nums.map(num => dict[num]);
 };
