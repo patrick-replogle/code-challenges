@@ -36,3 +36,16 @@ var smallerNumbersThanCurrent = function(nums) {
     }
     return output;
 };
+
+// second pass solution using sort and a hashmap
+var smallerNumbersThanCurrent = function(nums) {
+    let copy = [...nums].sort((a, b) => a - b);
+    let dict = {};
+    
+    for (let i = 0; i < copy.length; i++) {
+        if (!dict.hasOwnProperty(copy[i])) {
+            dict[copy[i]] = i;
+        }
+     }
+    return nums.map((num, i) => dict[num]);
+};
