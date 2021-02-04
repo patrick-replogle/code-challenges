@@ -18,12 +18,9 @@ Explanation: Factors list is [1, 7], the 2nd factor is 7.
 
 // first pass solution
 var kthFactor = function(n, k) {
-    let factors = [];
-    
     for (let i = 1; i <= n; i++) {
-        if (n % i === 0) {
-            factors.push(i);
-        }
+        if (n % i === 0) k--;
+        if (k === 0) return i;
     }
-    return factors[k-1] ? factors[k-1] : -1;
+    return -1;
 };
