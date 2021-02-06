@@ -27,8 +27,8 @@ var modifyString = function(s) {
                 charCode++;
             }
             arr[i] = String.fromCharCode(charCode);
+            charCode = 97;
         }
-        charCode = 97;
     });
     return arr.join('');
 };
