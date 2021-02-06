@@ -62,6 +62,7 @@ var numSpecial = function(mat) {
             let count = 0;
             for (let j = 0; j < mat.length; j++) {
                 if (mat[j][index] === 1) count++;
+                if (count > 1) break;
             }
             if (count === 1) output++;
         }
