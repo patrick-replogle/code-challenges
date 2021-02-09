@@ -25,7 +25,7 @@ Another solution is [-3,1,4,-2], which would also be accepted.
 
 // first pass solution
 var restoreArray = function(pairs) {
-    let graph = new Set();
+    let graph = {}
     let start = null;
     
     for (let pair of pairs) {
