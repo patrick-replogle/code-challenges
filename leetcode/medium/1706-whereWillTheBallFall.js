@@ -51,7 +51,7 @@ var findBall = function(grid) {
                 output[ball] = -1; // trapped against wall
                 break;
             }
-            else if (x === grid.length && y >= 0 && y <= grid[0].length - 1) {
+            else if (x === grid.length) {
                 output[ball] = y;  // valid path out of grid
                 break;
             }
