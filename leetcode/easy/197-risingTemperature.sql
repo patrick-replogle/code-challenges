@@ -42,5 +42,4 @@ In 2015-01-04, temperature was higher than the previous day (20 -> 30).
 SELECT d2.id 
 FROM Weather d1, Weather d2
 WHERE DATEDIFF(D2.recordDate, d1.recordDate) = 1
-AND D2.Temperature > D1.Temperature
-ORDER BY id ASC;
+AND D2.Temperature > D1.Temperature;
