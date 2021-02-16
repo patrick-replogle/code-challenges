@@ -42,10 +42,9 @@ var exclusiveTime = function(n, logs) {
             prevStartTime = Number(log[log.length-1]);
         } 
         else {
-            let currStart = stack.pop();
-            let currIdx = Number(currStart[0]);
+            stack.pop(); 
+            let currIdx = Number(log[0]);
             let currEndTime = Number(log[log.length - 1]);
-            
             output[currIdx] += currEndTime - prevStartTime + 1;
             prevStartTime = currEndTime + 1;
         }
