@@ -54,7 +54,7 @@ var shoppingOffers = function(price, special, needs) {
             min = Math.min(min, moneySpent);
         }
     }
-    recurse(0, [...needs], false);
+    recurse(0, needs, false);
     
     return min;
 };
