@@ -29,12 +29,13 @@ var GetImportance = function(employees, id) {
     }
     
     while (stack.length) {
-        let curr = graph[stack.pop()];
-        output += curr[0];
+        let [val, subs] = graph[stack.pop()];
+        output += val;
         
-        for (let sub of curr[1]) {
+        for (let sub of subs) {
             stack.push(sub)
         }
     }
     return output;
 };
+
