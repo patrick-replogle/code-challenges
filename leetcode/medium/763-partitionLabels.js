@@ -33,3 +33,27 @@ var partitionLabels = function(s) {
     }
     return output;
 };
+
+// second pass solution
+var partitionLabels = function(s) {
+    let output = [];
+    let dict = {};
+    let i = 0;
+    
+    for (let i = 0; i < s.length; i++) {
+        dict[s[i]] = i; // find index of last occurence of each char
+    }
+    
+    while (i < s.length) {
+        let last = dict[s[i]];
+        let j = i;
+        while (j < last) {
+            let nextLast = dict[s[j]];
+            if (nextLast > last) last = nextLast; // update last index if higher than previous one within current window
+            j++;
+        }
+        output.push(j - i + 1);
+        i = j + 1;
+    }
+    return output;
+};
