@@ -46,3 +46,35 @@ var addToArrayForm = function(A, K) {
     
     return output.reverse();
 };
+
+// second pass solution
+var addToArrayForm = function(A, K) {
+    let carry = 0;
+    let i = A.length - 1;
+    
+    while (i >= 0) {
+        let digit = K > 0 ? K % 10 : 0;
+        let num = i >= 0 ? A[i] : 0;
+        let next = digit + carry + num;
+ 
+        if (next <= 9) {
+            A[i] = next
+            carry = 0;
+        }
+        else {
+            A[i] = next % 10;
+            carry = Math.floor(next / 10);
+        }
+        i--;
+        K = Math.floor(K / 10);
+    }
+    K += carry;
+    
+    if (K > 0) {
+        let str = String(K);
+        for (let i = str.length - 1; i >= 0; i--) {
+            A.unshift(Number(str[i]));
+        }
+    }
+    return A;
+};
