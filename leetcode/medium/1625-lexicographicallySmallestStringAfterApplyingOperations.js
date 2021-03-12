@@ -37,9 +37,8 @@ var findLexSmallestString = function(s, a, b) {
         if (curr < min) min = curr;
         
         cache.add(curr);
-    
+        
         let addArr = curr.split('')
-        let k = b;
         
         for (let i = 1; i < addArr.length; i += 2) {
             addArr[i] = (Number(addArr[i]) + a) % 10;
