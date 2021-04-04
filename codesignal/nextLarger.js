@@ -34,16 +34,16 @@ function nextLarger(a) {
 // second pass solution using a stack
 function nextLarger(a) {
     let stack = [];
-    let output = [];
+    let output = new Array(a.length);
     
     for (let i = a.length - 1; i >= 0 ; i--) {
         let num = a[i];
         while (stack.length && num > stack[stack.length - 1]) {
             stack.pop();
         }
-        output.push(stack.length ? stack[stack.length - 1] : -1);
+        output[i] = stack.length ? stack[stack.length - 1] : -1;
         stack.push(num);
     }
-    return output.reverse();
+    return output;
 }
 
