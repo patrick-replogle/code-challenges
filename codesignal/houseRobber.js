@@ -28,3 +28,19 @@ function houseRobber(nums) {
     }
     return dp[dp.length - 1];
 }
+
+// second pass solution
+function houseRobber(nums) {
+    if (!nums.length) return 0;
+    if (nums.length <= 2) return Math.max(...nums);
+    
+    let prevPrev = nums[0];
+    let prev = Math.max(nums[0], nums[1]);
+    
+    for (let i = 2; i < nums.length; i++) {
+        let temp = prevPrev;
+        prevPrev = prev;
+        prev = Math.max(nums[i] + temp, nums[i], prev);
+    }
+    return prev;
+}
