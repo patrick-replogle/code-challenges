@@ -25,5 +25,5 @@ function maxSubsetSum(arr) {
     for (let i = 2; i < arr.length; i++) {
         dp[i] = Math.max(dp[i-2] + arr[i], arr[i], dp[i - 1]);
     }
-    return Math.max(...dp);
+    return dp[dp.length-1];
 }
