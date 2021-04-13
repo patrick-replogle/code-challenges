@@ -40,3 +40,17 @@ function encryption(s) {
     }
     return encodedMsg.join(' ');
 }
+
+// second pass solution
+function encryption(s) {
+    let cols = Math.ceil(Math.sqrt(s.length));
+    let encodedMsg = new Array(cols).fill('');
+    let i = 0;
+    
+    for (let char of s) {
+       encodedMsg[i] += char;
+       i++;
+       if (i === cols) i = 0; 
+    }
+    return encodedMsg.join(' ');
+}
