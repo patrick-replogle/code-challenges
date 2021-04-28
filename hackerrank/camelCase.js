@@ -17,3 +17,17 @@ function camelcase(s) {
     }
     return s.replace(/[^A-Z]/g, '').length + 1;
 }
+
+// second pass solution
+function camelcase(s) {
+    if (!s.length) return 0;
+    
+    let words = 0;
+    
+    s.split('').forEach(char => {
+        if (char === char.toUpperCase()) {
+            words++;
+        }
+    })
+    return words + 1;
+}
