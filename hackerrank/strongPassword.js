@@ -12,6 +12,7 @@ It contains at least one special character. The special characters are: !@#$%^&*
 // first pass solution
 function minimumNumber(n, password) {
     let charsToAdd = 0;
+    let specialChars = '!@#$%^&*()-+';
     let dict = {
         number: false,
         lower: false,
@@ -23,15 +24,15 @@ function minimumNumber(n, password) {
         if (/[0-9]/.test(char)) dict['number'] = true;
         else if (/[a-z]/.test(char)) dict['lower'] = true;
         else if (/[A-Z]/.test(char)) dict['upper'] = true;
-        else if (/[!@#$%^&*()-+]/.test(char)) dict['special'] = true;
+        else if (specialChars.includes(char)) dict['special'] = true;
     }
     if (!dict['number']) charsToAdd++;
     if (!dict['lower']) charsToAdd++;
     if (!dict['upper']) charsToAdd++;
     if (!dict['special']) charsToAdd++;
-    
+    console.log(dict)
     if (password.length + charsToAdd < 6) {
-        return  charsToAdd + (6 - (password.length + charsToAdd));
+        return charsToAdd + (6 - (password.length + charsToAdd));
     }
     return charsToAdd;
 }
