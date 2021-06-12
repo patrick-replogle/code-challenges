@@ -1,3 +1,4 @@
+// first pass solution
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> seen = new HashSet<>();
@@ -21,5 +22,34 @@ class Solution {
             }
         }
         return false;
+    }
+}
+
+// second pass solution
+class Solution {
+    Set<String> visited = new HashSet<>();
+    boolean flag = false;
+    
+    public boolean wordBreak(String s, List<String> wordDict) {
+        recurse(wordDict, s); 
+        
+        return flag;
+    }
+    
+    public void recurse(List<String> wordDict, String currPath) {
+        if (currPath.length() == 0) {
+            flag = true;
+            return;
+        }
+        
+        if (visited.contains(currPath) || flag) return;
+        
+        visited.add(currPath);
+        
+        for (String word : wordDict) {
+            if (currPath.startsWith(word)) {
+                recurse(wordDict, currPath.substring(word.length()));
+            }
+        }
     }
 }
