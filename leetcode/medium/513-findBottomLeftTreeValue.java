@@ -1,3 +1,4 @@
+// first pass solution using BFT
 class Solution {
     public int findBottomLeftValue(TreeNode root) {
         LinkedList<TreeNode> queue = new LinkedList<>();
@@ -17,5 +18,29 @@ class Solution {
             }
         }
         return output;
+    }
+}
+
+// second pass using DFT
+class Solution {
+    int maxLevel = -1;
+    int output = -1;
+    
+    public int findBottomLeftValue(TreeNode root) {
+        if (root == null) return -1;
+        
+        DFT(root, 0);
+        
+        return output;
+    }
+    
+    public void DFT(TreeNode root, int level) {
+        if (level > maxLevel) {
+            output = root.val;
+            maxLevel = level;
+        }
+        
+        if (root.left != null) DFT(root.left, level + 1);
+        if (root.right != null) DFT(root.right, level + 1);
     }
 }
