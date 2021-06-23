@@ -1,3 +1,4 @@
 # code-challenges
 
-This repo contains daily code challenges I have been working on
+This repo contains solutions to daily code challenges that I have solved.
+

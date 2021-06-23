@@ -1,0 +1,50 @@
+// Given the root node of a binary search tree (BST) and a value. You need to find the node in the BST that the node's value equals the given value. 
+// Return the subtree rooted with that node. If such node doesn't exist, you should return NULL.
+
+// For example, 
+
+// Given the tree:
+//         4
+//        / \
+//       2   7
+//      / \
+//     1   3
+
+// And the value to search: 2
+// You should return this subtree:
+
+//       2     
+//      / \   
+//     1   3
+// In the example above, if we want to search the value 5, since there is no node with value 5, we should return NULL.
+
+// Note that an empty tree is represented by NULL, therefore you would see the expected output (serialized tree format) as [], not null.
+
+// first pass solution using recursion
+var searchBST = function(root, val) {
+    function traverse(root, val) {
+        if (!root) return null;
+        if (root.val === val) return root;
+
+        if (val < root.val) return searchBST(root.left, val);
+        if (val > root.val) return searchBST(root.right, val); 
+    }
+    return traverse(root, val)
+};
+
+// second pass iterative solution
+var searchBST = function(root, val) {
+    if (!root) return null;
+    
+    let stack = [root];
+    
+    while (stack.length) {
+        let curr = stack.pop();
+        
+        if (!curr) return null;
+        else if (curr.val === val) return curr;
+        else if (curr.val > val) stack.push(curr.left);
+        else if (curr.val < val) stack.push(curr.right);
+    }
+    return null;
+};

@@ -21,7 +21,7 @@
  * @return {ListNode}
  */
 
-
+// first pass solution
 var removeElements = function(head, val) {
     while(head && head.val === val) {
         head = head.next;
@@ -36,6 +36,26 @@ var removeElements = function(head, val) {
             curr = curr.next;
         }
     }
+    return head;
+};
 
+// second pass solution
+var removeElements = function(head, val) {
+    while (head && head.val === val) {
+        head = head.next;
+    }
+    
+    let curr = head;
+    let prev = null;
+    
+    while (curr) {
+        if (curr.val === val) {
+            prev.next = curr.next;
+            curr = curr.next;
+        } else {
+            prev = curr;
+            curr = curr.next;
+        }
+    }
     return head;
 };

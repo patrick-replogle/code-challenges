@@ -1,0 +1,58 @@
+/*
+Given an array A of integers, return the length of the longest arithmetic subsequence in A.
+
+Recall that a subsequence of A is a list A[i_1], A[i_2], ..., A[i_k] with 0 <= i_1 < i_2 < ... < i_k <= A.length - 1, and that a 
+sequence B is arithmetic if B[i+1] - B[i] are all the same value (for 0 <= i < B.length - 1).
+
+Example 1:
+Input: A = [3,6,9,12]
+Output: 4
+Explanation: 
+The whole array is an arithmetic sequence with steps of length = 3.
+
+Example 2:
+Input: A = [9,4,7,2,10]
+Output: 3
+Explanation: 
+The longest arithmetic subsequence is [4,7,10].
+*/
+
+// first pass solution
+var longestArithSeqLength = function(A) {
+    let longest = 0;
+    
+    for (let i = 0; i < A.length - 2; i++) {
+        for (let j = i + 1; j < A.length - 1; j++) {
+            let length = 2;
+            let diff = A[j] - A[i];
+            let prev = A[j]
+            for (let k = j + 1; k < A.length; k++) {
+                if (A[k] - prev === diff) {
+                    length++;
+                    prev = A[k]
+                }
+            }
+            longest = Math.max(longest, length);
+        }
+    }
+    return longest;
+};
+
+// dynamic programming approach to solve it
+var longestArithSeqLength = function(A) {
+    let dp = A.map(el => el = {});
+    let max = 0;
+    
+    for (let i = 1; i < A.length; i++) {
+        for (let j = 0; j < i; j++) {
+            let diff = A[i] - A[j];
+            if (diff in dp[j]) {
+                dp[i][diff] = dp[j][diff] + 1;
+            } else {
+                dp[i][diff] = 2;
+            }
+            max = Math.max(max, dp[i][diff]);
+        }
+    }
+    return max;
+};
