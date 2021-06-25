@@ -55,3 +55,44 @@ class Solution {
         return max;
     }
 }
+
+// third pass using dynamic programming
+class Solution {
+    public int longestStrChain(String[] words) {
+        int[] dp = new int[words.length];
+        int output = 1;
+        
+        Arrays.sort(words, (a, b) -> a.length() - b.length());
+        Arrays.fill(dp, 1);
+        
+        for (int i = 1; i < words.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (isValid(words[j], words[i])) { 
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            output = Math.max(output, dp[i]);
+        }
+        
+        return output;
+    }
+    
+    public boolean isValid(String str1, String str2) {
+        if (str2.length() - str1.length() != 1) return false;
+        int missmatchCount = 0;
+        int i = 0;
+        int j = 0;
+        
+        while (i < str1.length() && j < str2.length()) {
+            if (str1.charAt(i) == str2.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                missmatchCount++;
+                j++;
+                if (missmatchCount > 1) return false;
+            }
+        }
+        return true;
+    }
+}
