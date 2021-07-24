@@ -71,3 +71,24 @@ class Solution {
         return arr.get(arr.size() - 2);
     }
 }
+
+// fourth pass solution
+class Solution {
+    public int secondHighest(String s) {
+        int max = -1;
+        int second = -1;
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isDigit(s.charAt(i))) {
+                int num = Integer.parseInt(String.valueOf(s.charAt(i)));
+                if (num > max) {
+                    second = max;
+                    max = num;
+                } else if (num != max){
+                    second = Math.max(second, num);
+                } 
+            }
+        }
+        return second;
+    }
+}
