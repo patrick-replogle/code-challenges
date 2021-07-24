@@ -24,3 +24,17 @@ class Solution {
         return output.trim();
     }
 }
+
+// third pass solution
+class Solution {
+    public String truncateSentence(String s, int k) {
+        String[] strArr = s.split(" ");
+        StringBuilder output = new StringBuilder();
+        
+        for (int i = 0; i < k; i++) {
+            output.append(strArr[i] + " ");
+        }
+        
+        return output.toString().trim();
+    }
+}
