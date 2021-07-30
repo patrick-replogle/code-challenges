@@ -20,3 +20,24 @@ class Solution {
         return true;
     }
 }
+
+// second pass solution
+class Solution {
+    public boolean areOccurrencesEqual(String s) {
+        int[] charCount = new int[26];
+        int baseline = 0;
+        
+        for (int i = 0; i < s.length(); i++) {
+            int index = (int) s.charAt(i) - 97;
+            charCount[index]++;
+            baseline = charCount[index];
+        }
+        
+        for (int i = 0; i < 26; i++) {
+            if (charCount[i] != 0 && charCount[i] != baseline) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
