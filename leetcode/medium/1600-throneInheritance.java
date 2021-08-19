@@ -48,20 +48,19 @@ class ThroneInheritance {
     
     public List<String> getInheritanceOrder() {
         List<String> output = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<>();
         
-        stack.push(kingdom.get(king));
-        
-        while (!stack.isEmpty()) {
-            TreeNode curr = stack.pop();
-            if (!curr.getIsDead()) output.add(curr.getName());
-            
-            for (int i = curr.getChildren().size() - 1; i >= 0; i--) {
-                TreeNode child = kingdom.get(curr.getChildren().get(i));
-                stack.push(child);
-            }
-        }
+        recurse(output, kingdom.get(king));
         
         return output;
+    }
+    
+        public void recurse(List<String> list, TreeNode node) {
+        if (!node.getIsDead()) {
+            list.add(node.getName());
+        }
+        
+        for (String c : node.getChildren()) {
+            recurse(list, kingdom.get(c));
+        }
     }
 }
