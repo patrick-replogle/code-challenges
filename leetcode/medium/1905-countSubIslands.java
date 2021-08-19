@@ -2,7 +2,6 @@
 class Solution {
     public int countSubIslands(int[][] grid1, int[][] grid2) {
         int output = 0;
-        List<List<Integer>> arr = new ArrayList<>();
         
         for (int i = 0; i < grid2.length; i++) {
             for (int j = 0; j < grid2[i].length; j++) {
