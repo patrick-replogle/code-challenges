@@ -1,3 +1,4 @@
+// first pass naive solution
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         ArrayList<Integer> values = new ArrayList<>();
@@ -19,5 +20,29 @@ class Solution {
         }
         
         return reference.next;
+    }
+}
+
+// second pass solution using a heap
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> a - b);
+        ListNode output = new ListNode(0);
+        
+        for (ListNode list : lists) {
+            while (list != null) {
+                pq.add(list.val);
+                list = list.next;
+            }
+        }
+        
+        ListNode curr = output;
+        
+        while (pq.size() > 0) {
+            curr.next = new ListNode(pq.poll());
+            curr = curr.next;
+        }
+        
+        return output.next;
     }
 }
