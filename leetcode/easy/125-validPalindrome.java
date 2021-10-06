@@ -1,3 +1,4 @@
+// first pass solution
 class Solution {
     public boolean isPalindrome(String s) {
         s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
@@ -12,5 +13,19 @@ class Solution {
             j--;
         }
         return String.join("", arr).equals(s);
+    }
+}
+
+// second pass solution
+class Solution {
+    public boolean isPalindrome(String s) {
+        StringBuilder sb = new StringBuilder();
+        
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c) || Character.isLetter(c)) {
+                sb.append(Character.toLowerCase(c));
+            }
+        }
+        return sb.toString().equals(sb.reverse().toString());
     }
 }
