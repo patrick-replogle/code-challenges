@@ -17,7 +17,9 @@ class Solution {
                 if (head != null) {
                     output[startRow][j] = head.val;
                     head = head.next;
-                } 
+                }  else {
+                    break;
+                }
             }
             startRow++;
             
@@ -25,7 +27,9 @@ class Solution {
                 if (head != null) {
                     output[i][endCol] = head.val;
                     head = head.next;
-                } 
+                } else {
+                    break;
+                }
             }
             
             endCol--;
@@ -34,6 +38,8 @@ class Solution {
                 if (head != null) {
                     output[endRow][j] = head.val;
                     head = head.next;
+                } else {
+                    break;
                 }
             }
             endRow--;
@@ -42,7 +48,9 @@ class Solution {
                 if (head != null) {
                     output[i][startCol] = head.val;
                     head = head.next;
-                } 
+                } else {
+                    break;
+                }
             }
             startCol++;
         }
