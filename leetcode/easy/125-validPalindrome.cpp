@@ -5,7 +5,7 @@ public:
         int j = s.length() - 1;
 
         while (i <= j) {
-            while (i < j && i <= j && !iswalnum(s[i])) i++;
+            while (i < s.length() && i <= j && !iswalnum(s[i])) i++;
             while (j >= 0 && j >= i && !iswalnum(s[j])) j--;
             if (i > j) return true;
             if (tolower(s[i]) != tolower(s[j])) return false;
